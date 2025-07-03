@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Inventar{% endblock %}
+{% block content %}
+<h1 class="mb-4">Inventar</h1>
+<table class="table" id="items-table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Menge</th>
+            <th>Ort</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/inventory.js"></script>
+{% endblock %}
