@@ -1,6 +1,25 @@
 {% extends 'base.html' %}
 {% block title %}Kalender{% endblock %}
 {% block content %}
-<h1>Kalender</h1>
-<p>Kalender-Übersicht.</p>
+<h1 class="mb-3">Kalender</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Frist</th>
+            <th>Auftrag</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.due_date }}</td>
+            <td>{{ order.name }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="2">Keine Termine.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

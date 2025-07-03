@@ -7,3 +7,13 @@ class Item(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Order(models.Model):
+    name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
+    product = models.ForeignKey(Item, on_delete=models.CASCADE)
+    due_date = models.DateField()
+
+    def __str__(self):
+        return self.name
