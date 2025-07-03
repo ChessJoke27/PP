@@ -35,12 +35,18 @@ Falls Sie Git Bash auf Windows verwenden, aktivieren Sie die Umgebung mit:
 source venv/Scripts/activate
 ```
 
-3. Datenbank migrieren und Server starten
+3. Datenbank migrieren und einen Benutzer anlegen
 
 ```bash
 cd inventurprojekt
 python manage.py migrate
+python manage.py createsuperuser  # Benutzer für den Login anlegen
 python manage.py runserver 0.0.0.0:8000
 ```
 
+Das Skript `manage.py` versucht beim Start des Servers automatisch, ausstehende
+Migrationen auszuführen. Sollten Sie dennoch Fehlermeldungen wie
+"no such table" erhalten, führen Sie `python manage.py migrate` manuell aus.
+
 4. Zugriff von außen (z. B. über Port-Forwarding oder DynDNS) nur für die eigene IP freigeben. Dies kann auf Router-Ebene oder per Firewall-Regel erfolgen.
+Die Anmeldung erfolgt über `http://localhost:8000/accounts/login/`.
