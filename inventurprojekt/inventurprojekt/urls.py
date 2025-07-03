@@ -3,11 +3,13 @@ from django.urls import path, include
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
+from inventory.views import OrderListView, OrderCreateView, CalendarView
 
 urlpatterns = [
     path('', TemplateView.as_view(template_name='inventory.html'), name='home'),
-    path('auftraege/', TemplateView.as_view(template_name='orders.html'), name='orders'),
-    path('kalender/', TemplateView.as_view(template_name='calendar.html'), name='calendar'),
+    path('auftraege/', OrderListView.as_view(), name='orders'),
+    path('auftraege/neu/', OrderCreateView.as_view(), name='order-create'),
+    path('kalender/', CalendarView.as_view(), name='calendar'),
     path('produkte/', TemplateView.as_view(template_name='products.html'), name='products'),
     path('admin/', admin.site.urls),
     path('api/', include('inventory.urls')),
