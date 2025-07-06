@@ -4,7 +4,8 @@ from .models import Item, Order
 class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['id', 'name', 'quantity', 'location']
+        fields = ['id', 'name', 'quantity', 'location', 'brand', 'purchase_date']
+        read_only_fields = ['purchase_date']
 
 
 class OrderSerializer(serializers.ModelSerializer):

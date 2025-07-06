@@ -14,6 +14,8 @@ class Item(models.Model):
     name = models.CharField(max_length=255)
     quantity = models.IntegerField(default=0)
     location = models.CharField(max_length=255)
+    brand = models.CharField(max_length=255, blank=True)
+    purchase_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
         return self.name
