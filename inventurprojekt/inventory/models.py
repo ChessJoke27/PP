@@ -24,7 +24,8 @@ class Item(models.Model):
 class Order(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    product = models.ForeignKey(Item, on_delete=models.CASCADE)
+    # Link orders to products instead of inventory items
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     due_date = models.DateField()
 
     def __str__(self):
