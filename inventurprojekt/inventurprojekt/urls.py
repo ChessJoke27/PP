@@ -6,7 +6,8 @@ from django.contrib.auth import views as auth_views
 from inventory.views import OrderListView, OrderCreateView, CalendarView
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='inventory.html'), name='home'),
+    path('', CalendarView.as_view(), name='home'),
+    path('inventar/', TemplateView.as_view(template_name='inventory.html'), name='inventory'),
     path('auftraege/', OrderListView.as_view(), name='orders'),
     path('auftraege/neu/', OrderCreateView.as_view(), name='order-create'),
     path('kalender/', CalendarView.as_view(), name='calendar'),

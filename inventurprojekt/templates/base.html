@@ -9,10 +9,11 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/">Home</a>
+            <a class="navbar-brand" href="{% url 'home' %}">Kalender</a>
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item"><a class="nav-link" href="{% url 'orders' %}">Aufträge</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'inventory' %}">Inventar</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'calendar' %}">Kalender</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'products' %}">Produkte</a></li>
                 </ul>
@@ -21,22 +22,6 @@
     </nav>
     <div class="container">
         {% block content %}{% endblock %}
-    <nav class="navbar navbar-light bg-light mb-4">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1">Inventar</span>
-        </div>
-    </nav>
-    <div class="container mb-4">
-        <table class="table" id="items-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Menge</th>
-                    <th>Ort</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
     </div>
     {% block scripts %}{% endblock %}
 </body>
