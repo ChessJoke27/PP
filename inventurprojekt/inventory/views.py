@@ -1,9 +1,9 @@
 from rest_framework import generics
 from django.views.generic import ListView, CreateView, TemplateView
 from django.urls import reverse_lazy
-from .models import Item, Order
+from .models import Item, Order, Product
 from .serializers import ItemSerializer, OrderSerializer
-from .forms import OrderForm
+from .forms import OrderForm, ProductForm
 
 class ItemListCreateView(generics.ListCreateAPIView):
     queryset = Item.objects.all()
@@ -43,3 +43,15 @@ class CalendarView(TemplateView):
         context = super().get_context_data(**kwargs)
         context['orders'] = Order.objects.all().order_by('due_date')
         return context
+
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'products.html'
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'product_form.html'
+    success_url = reverse_lazy('products')
